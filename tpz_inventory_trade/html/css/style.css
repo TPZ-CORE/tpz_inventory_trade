@@ -1,0 +1,397 @@
+@import url('https://fonts.cdnfonts.com/css/chinese-rocks');
+
+@font-face {
+	font-family: RDRLino;
+	src: url(../fonts/RDRLino-Regular.ttf);
+}
+
+body {
+	width: 26%;
+	height: 12vw;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+
+	overflow: hidden;
+	display: none;
+  text-align: center;
+	justify-content: center;
+	align-items: center;
+
+  margin-left: 34.5%;
+  margin-top: -22%;
+
+}
+
+
+#main{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+
+  margin-top: 40vw;
+
+  background-image: url(../img/background.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position-x: center;
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  
+  justify-content: center;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+
+/* IN PROGRESS - REQUEST */
+
+#in-progress-create-title, #in-progress-create-quantity-description, #in-progress-create-cost-description {
+	position: absolute;
+	
+	color: white;
+	font-size: 0.75vw;
+
+  font-weight: lighter;
+
+	width: 21vw;
+  height: 2vw;
+	margin-left: 2.2vw;
+	margin-top: 2.5vw;
+	text-align: center;
+}
+
+#in-progress-create-cost-description {
+  margin-top: 6.5vw;
+}
+
+#in-progress-create-title {
+  color: #ddc076;
+
+  font-size: 1.1vw;
+  font-weight: bold;
+
+  margin-top: 0.6vw;
+}
+
+
+#in-progress-create-quantity-input, #in-progress-create-cost-input {
+  position: absolute;
+  
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #ffffffd8;
+	font-size: 0.7vw;
+
+  font-weight: bold;
+
+  width: 9.7vw;
+  height: 1vw;
+
+  margin-left: 8vw;
+  margin-top: 4.5vw;
+
+	text-align: center;
+
+  background-color: rgba(55, 55, 55, 0.288);
+  
+}
+
+#in-progress-create-cost-input {
+  margin-top: 8.5vw;
+}
+
+#in-progress-create-account-previous {
+  position: absolute;
+
+	font-family: 'RDRLino', RDRLino, serif;
+
+	color: rgb(199, 199, 199);
+	font-size: 1vw;
+  text-align: center;
+
+  width: 1vw;
+  height: 1vw;
+
+  margin-left: 6.8vw;
+  margin-top: 9.8vw;
+
+  background-color: rgba(31, 31, 31, 0.623);
+}
+
+#in-progress-create-account-current {
+	position: absolute;
+
+	font-family: 'RDRLino', RDRLino, serif;
+
+	color: rgb(199, 199, 199);
+	font-size: 0.8vw;
+  text-align: center;
+
+  width: 9.7vw;
+  height: 1vw;
+
+  margin-left: 8vw;
+  margin-top: 9.8vw;
+
+  background-color: rgba(31, 31, 31, 0.623);
+}
+
+#in-progress-create-account-next {
+  position: absolute;
+
+	font-family: 'RDRLino', RDRLino, serif;
+
+	color: rgb(199, 199, 199);
+	font-size: 1vw;
+  text-align: center;
+
+  width: 1vw;
+  height: 1vw;
+
+  margin-left: 17.9vw;
+  margin-top: 9.8vw;
+
+  background-color: rgba(31, 31, 31, 0.623);
+}
+
+
+#in-progress-create-account-previous:hover, #in-progress-create-account-next:hover {
+  opacity: 0.7;
+}
+
+/* Receiver */
+
+#on-target-progress-title {
+  position: absolute;
+	font-family: 'RDRLino', RDRLino, serif;
+  width: 22vw;
+  height: fit-content;
+
+  text-align: center;
+  font-size: 0.7vw;
+
+  color: rgb(117, 111, 77);
+
+  margin-left: 1vw;
+  margin-top: 1.3vw;
+
+}
+
+#on-target-progress-image-display img {
+  position: absolute;
+
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+#on-target-progress-image-border-display {
+  position: absolute;
+
+  display: block;
+  height: 6.6vw;
+  width: 7vw;
+
+  text-align: center;
+
+  margin-top: 1.45vw;
+
+  margin-left: 2.3vw;
+
+  background-color: #38383840;
+  border-radius: 2%;
+  border: 2px solid rgba(126, 126, 126, 0.415);
+}
+
+#on-target-progress-image-display {
+  position: absolute;
+
+  display: block;
+  height: 5.5vw;
+  width: 5.5vw;
+
+  text-align: center;
+
+  margin-top: 1.95vw;
+
+  margin-left: 3.1vw;
+
+  background-color: #e0e0e065;
+  opacity: 0.6;
+}
+
+#on-target-progress-image-amount-display{
+  position: absolute;
+
+  font-size: 0.788vw;
+  color: #000000;
+  display: inline-block;
+  height: 1.5vw;
+  width: 2vw;
+
+  text-align: center;
+
+  font-weight: bold;
+  margin-top: 1.1vw;
+
+  margin-left: 1.5%;
+
+  padding-top: 0.5vw;
+
+  border-radius: 49%;
+  background-color: #d3d2d2cc;
+}
+
+#on-target-progress-image-durability-display{
+  position: absolute;
+
+  font-size: 0.6vw;
+  color: white;
+  display: inline-block;
+  height: 1.3vw;
+  width: 1.8vw;
+
+  text-align: center;
+
+  font-weight: bold;
+
+  margin-top: 6.2vw;
+  margin-left: 7.2vw;
+
+  padding-top: 0.5vw;
+
+  border-radius: 49%;
+  background-color: #8a2626df;
+}
+
+#on-target-progress-image-name-display{
+  position: absolute;
+
+  font-size: 0.72vw;
+
+	color: #ddc076;
+
+  height: fit-content;
+
+  width: 7vw;
+
+  font-weight: bold;
+
+  text-align: center;
+
+  margin-left: 2.32vw;
+  margin-top: 9vw;
+
+  padding-top: 0.1vw;
+
+  opacity: 0.8;
+
+  background-color: rgba(26, 37, 55, 0.283);
+  border-radius: 2%;
+  border: 0.5px solid rgba(101, 101, 101, 0.215);
+}
+
+#on-target-progress-sender-username {
+  position: absolute;
+
+  font-family: 'RDRLino', RDRLino, serif;
+
+  font-size: 0.9vw;
+
+	color: #ddc076;
+
+  height:1vw;
+
+	width: 16vw;
+
+  text-align: left;
+
+  margin-left: 10.25vw;
+  margin-top: 2vw;
+
+  opacity: 0.8;
+
+}
+
+#on-target-progress-cost {
+  position: absolute;
+  width: 15vw;
+  height: fit-content;
+  
+	font-family: 'RDRLino', RDRLino, serif;
+  text-align: left;
+
+  font-size: 0.7vw;
+
+  font-weight: lighter;
+
+	color: white;
+
+  margin-left: 10.25vw;
+  margin-top: 4.2vw;
+
+  opacity: 0.8;
+}
+
+#in-progress-create-cancel, #on-target-progress-decline, 
+#in-progress-create-accept, #on-target-progress-accept{
+  position: absolute;
+
+  color: white;
+	font-size: 0.65vw;
+
+	text-align: center;
+
+  opacity: 0.8;
+
+  height: 1.5vw;
+  width: 5vw;
+
+  border: solid transparent;
+  float: left; 
+  
+  background-size: 100% 100%!important;
+  background-image: url(../img/button.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  margin-top: 8.2vw;
+  margin-left: 2.3vw;
+  padding-top: 0.5vw;
+}
+
+#in-progress-create-accept, #in-progress-create-cancel {
+  margin-top: 11.7vw;
+}
+
+#on-target-progress-decline, #in-progress-create-cancel { margin-left: 18vw; }
+
+#on-target-progress-accept { margin-left: 11vw; }
+
+#on-target-progress-decline:hover, #on-target-progress-accept:hover,
+#in-progress-create-cancel:hover, #in-progress-create-accept:hover {
+  opacity: 0.6;
+}
+
+input[type=text] {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+
+	color: rgba(255, 255, 255, 0.719);
+
+	text-align: center;
+  background-color: rgba(231, 231, 231, 0.781);
+	border: 1px solid rgba(129, 129, 129, 0.253);
+}
