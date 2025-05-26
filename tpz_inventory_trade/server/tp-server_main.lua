@@ -246,10 +246,10 @@ AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(ite
     TransactionsList[targetTransactionId] = nil
     TransactionsList[senderTransactionId] = nil
 
-    xPlayer.disconnect(Locales['DEVTOOLS_INJECTION_DETECTED'])
+    xPlayer.ban(Locales['DEVTOOLS_INJECTION_DETECTED'], -1)
 
     if target_source ~= sender_source then
-      sPlayer.disconnect(Locales['DEVTOOLS_INJECTION_DETECTED'])
+      sPlayer.ban(Locales['DEVTOOLS_INJECTION_DETECTED'], -1)
     end
 
     return
