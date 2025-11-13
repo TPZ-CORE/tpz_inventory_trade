@@ -20,6 +20,8 @@ local TradingData = {
     maxQuantity = 0,
 }
 
+local loadedTasks = false
+
 -----------------------------------------------------------
 --[[ Function Getters ]]--
 -----------------------------------------------------------
@@ -81,6 +83,8 @@ function StartTradingProcess(targetId, data, quantity)
     TradingData.maxQuantity = tonumber(quantity)
 
     PlayerData.IsBusy       = true
+
+    TriggerEvent('tpz_inventory_trade:client:tasks')
 
     SendNUIMessage({ action = 'startTradingTransactionProcess' })
 
@@ -196,6 +200,8 @@ AddEventHandler('tpz_inventory_trade:client:startTargetTradingProcess', function
             ToggleUI(true)
 
             PlayerData.IsBusy = true
+
+            TriggerEvent('tpz_inventory_trade:client:tasks')
         else
 
             local notifyData = Locales['CANNOT_REQUEST_WHILE_UNCONSCIOUS']
@@ -205,5 +211,25 @@ AddEventHandler('tpz_inventory_trade:client:startTargetTradingProcess', function
         end
 
     end
+
+end)
+
+AddEventHandler('tpz_inventory_trade:client:tasks', function()
+
+    if loadedTasks then 
+        return 
+    end
+
+    loadedTasks = true 
+
+    Citizen.CreateThread(function()
+
+        while PlayerData.IsBusy do 
+
+            Wait(100)
+            TriggerEvent('tpz_inventory:closePlayerInventory')
+        end
+    
+    end)
 
 end)
