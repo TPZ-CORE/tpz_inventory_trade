@@ -117,6 +117,11 @@ AddEventHandler('tpz_inventory_trade:server:requestTargetTradingProcessResponse'
   local _tsource       = tonumber(id)
 
   local xPlayer        = TPZ.GetPlayer(_source)
+
+  if xPlayer.hasLostConnection() then
+    return 
+  end
+		
   local senderUsername = xPlayer.getFirstName() .. " " .. xPlayer.getLastName() -- sender username.
 
   local tPlayer        = TPZ.GetPlayer(_tsource)
@@ -214,9 +219,13 @@ AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(ite
   math.randomseed(os.time()) -- diffenet cooldown for netbug
   Wait(500, 1000) -- diffenet cooldown for netbug
 
-  local xPlayer       = TPZ.GetPlayer(target_source)
-  local sPlayer       = TPZ.GetPlayer(sender_source)
-
+  local xPlayer = TPZ.GetPlayer(target_source)
+  local sPlayer = TPZ.GetPlayer(sender_source)
+		
+  if xPlayer.hasLostConnection() then
+    return 
+  end
+		
   account = tonumber(account)
 
   local accountExist = DoesAccountExist(account)
@@ -452,3 +461,4 @@ Citizen.CreateThread(function ()
   end
 
 end)
+
