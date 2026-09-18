@@ -121,7 +121,7 @@ AddEventHandler('tpz_inventory_trade:server:requestTargetTradingProcessResponse'
   if xPlayer.hasLostConnection() then
     return 
   end
-		
+  
   local senderUsername = xPlayer.getFirstName() .. " " .. xPlayer.getLastName() -- sender username.
 
   local tPlayer        = TPZ.GetPlayer(_tsource)
@@ -202,6 +202,11 @@ AddEventHandler('tpz_inventory_trade:server:requestTargetTradingProcessResponse'
     targetId  = _tsource, 
     cooldown  = Config.TradingDuration,
     triggered = false,
+
+    cost      = cost, -- 1.0.3
+    account   = account,-- 1.0.3
+    quantity  = quantity,-- 1.0.3
+    itemData  = itemData,-- 1.0.3
   }
 
   TriggerClientEvent('tpz_inventory:closePlayerInventory', _tsource)
@@ -211,8 +216,9 @@ end)
 
 -- The following event is called when the target accepts the trade and the system checks
 -- if the target has enough money and enough weight to accept it.
+-- 1.0.3 removed cost, account & quantity for preventing injection.
 RegisterServerEvent("tpz_inventory_trade:server:onServerTradingAccept")
-AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(itemData, senderId, cost, account, quantity)
+AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(senderId)
   local target_source = source -- target source
   local sender_source = tonumber(senderId) -- sender source
 
@@ -221,18 +227,15 @@ AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(ite
 
   local xPlayer = TPZ.GetPlayer(target_source)
   local sPlayer = TPZ.GetPlayer(sender_source)
-		
+
   if xPlayer.hasLostConnection() then
     return 
   end
-		
-  account = tonumber(account)
 
-  local accountExist = DoesAccountExist(account)
   local targetHasTransactionActive, targetTransactionId = DoesPlayerHasTransactionActive(target_source)
   local senderHasTransactionActive, senderTransactionId = DoesPlayerHasTransactionActive(sender_source)
 
-  if ( target_source == sender_source ) or ( not targetHasTransactionActive ) or ( not senderHasTransactionActive ) or ( targetTransactionId ~= senderTransactionId ) or ( not accountExist ) or (itemData.type == nil ) or (itemData.type == 'weapon' and itemData.itemId == nil) then
+  if ( target_source == sender_source ) or ( not targetHasTransactionActive ) or ( not senderHasTransactionActive ) or ( targetTransactionId ~= senderTransactionId )  then
 
     if Config.Webhooks['DEVTOOLS_INJECTION_CHEAT'].Enabled then
 
@@ -267,7 +270,10 @@ AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(ite
   if TransactionsList[targetTransactionId].triggered then -- a protection for ethernet cable dup.
     return
   end
-  
+
+  -- 1.0.3 fix
+  local itemData, cost, account, quantity = TransactionsList[targetTransactionId].itemData, TransactionsList[targetTransactionId].cost, TransactionsList[targetTransactionId].account, TransactionsList[targetTransactionId].quantity
+
   TransactionsList[targetTransactionId].triggered = true
 
   local doesSenderHaveItemQuantity = false
@@ -299,9 +305,9 @@ AddEventHandler("tpz_inventory_trade:server:onServerTradingAccept", function(ite
 
   else -- checking items or weapons
 
-    local currentSenderItemQuantity = sPlayer.getItemQuantity(itemData.item)
+    local currentSenderItemQuantity = sPlayer.getItemQuantity(itemData.item) -- 1.0.3 fix
 
-    if currentSenderBlackMoney and quantity <= currentSenderItemQuantity then
+    if currentSenderItemQuantity and quantity <= currentSenderItemQuantity then
       doesSenderHaveItemQuantity = true
     end
 
@@ -461,4 +467,3 @@ Citizen.CreateThread(function ()
   end
 
 end)
-
