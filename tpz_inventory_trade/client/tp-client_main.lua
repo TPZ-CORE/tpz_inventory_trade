@@ -139,6 +139,12 @@ AddEventHandler('tpz_inventory_trade:client:setPlayerBusy', function(cb)
         PlayerData.IsTrading = false
     end
 
+    if cb == false then 
+        loadedTasks = false 
+    end
+
+    
+
 end)
 
 RegisterNetEvent('tpz_inventory_trade:client:startTargetTradingProcess')
@@ -152,7 +158,7 @@ AddEventHandler('tpz_inventory_trade:client:startTargetTradingProcess', function
     if not PlayerData.IsTrading then
 
         if not isDead then
-        
+    
             Wait(250)
 
             PlayerData.IsTrading       = true
@@ -202,6 +208,7 @@ AddEventHandler('tpz_inventory_trade:client:startTargetTradingProcess', function
             PlayerData.IsBusy = true
 
             TriggerEvent('tpz_inventory_trade:client:tasks')
+
         else
 
             local notifyData = Locales['CANNOT_REQUEST_WHILE_UNCONSCIOUS']
@@ -224,20 +231,20 @@ AddEventHandler('tpz_inventory_trade:client:tasks', function()
 
     Citizen.CreateThread(function()
 
-        while PlayerData.IsBusy do 
+        while loadedTasks do 
 
             Wait(100)
             TriggerEvent('tpz_inventory:closePlayerInventory')
         end
     
     end)
-        
+
     -- PUSH TO TALK.
     Citizen.CreateThread(function()
         
         local IS_NUI_FOCUSED = false
 
-        while true do
+        while loadedTasks do
 
             if not PlayerData.IsBusy then
     
@@ -265,6 +272,5 @@ AddEventHandler('tpz_inventory_trade:client:tasks', function()
         end
 
     end)
-        
-end)
 
+end)
