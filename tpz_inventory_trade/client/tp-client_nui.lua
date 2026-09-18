@@ -66,7 +66,7 @@ RegisterNUICallback('accept', function()
 
     Cooldown = true
 
-    TriggerServerEvent("tpz_inventory_trade:server:onServerTradingAccept", PlayerData.ItemData, TradingData.senderId, TradingData.cost, TradingData.account, tonumber(TradingData.quantity))
+    TriggerServerEvent("tpz_inventory_trade:server:onServerTradingAccept", TradingData.senderId) -- PlayerData.ItemData, TradingData.cost, TradingData.account, tonumber(TradingData.quantity)) 1.0.3 REMOVED THOSE PARAMETERS FOR PREVENTING CHEATING / INJECTION.
     
     local notifyData = Locales['PLAYER_ACCEPTED_TRADE']
     TriggerEvent("tpz_notify:sendNotification", notifyData.title, string.format(notifyData.message, TradingData.targetUsername), notifyData.icon, "success", notifyData.duration)
